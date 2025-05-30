@@ -1,28 +1,81 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+
+const DRAWINGS = [
+  '/drawings/1.jpg',
+  '/drawings/2.jpg',
+  '/drawings/3.jpg',
+  '/drawings/4.jpg',
+  '/drawings/5.jpg',
+  '/drawings/6.JPG',
+  '/drawings/8.png',
+  '/drawings/9.jpg',
+  '/drawings/10.JPG',
+  '/drawings/11.png',
+  '/drawings/12.JPG',
+  '/drawings/13.jpeg',
+  '/drawings/14.png',
+  '/drawings/15.png',
+  '/drawings/16.jpg',
+  '/drawings/18.jpg',
+  '/drawings/19.JPG',
+  '/drawings/20.JPG',
+  '/drawings/21.jpeg',
+  '/drawings/22.jpeg',
+  '/drawings/23.JPEG',
+  '/drawings/25.jpeg',
+  '/drawings/26.jpg',
+  '/drawings/27.jpeg',
+  '/drawings/28.jpeg',
+  '/drawings/29.jpg',
+  '/drawings/30.jpg',
+  '/drawings/32.JPG',
+  '/drawings/33.jpeg',
+  '/drawings/34.jpeg',
+  '/drawings/36.jpg',
+  '/drawings/37.jpg',
+  '/drawings/38.jpg',
+  '/drawings/39.jpg',
+  '/drawings/40.png',
+  '/drawings/42.jpg',
+  '/drawings/43.JPG',
+  '/drawings/44.jpg',
+  '/drawings/45.JPG',
+  '/drawings/46.png',
+  '/drawings/47.jpeg',
+  '/drawings/48.JPG',
+  '/drawings/49.jpg',
+  '/drawings/50.png',
+  '/drawings/51.png',
+  '/drawings/52.jpg',
+  '/drawings/53.JPEG',
+  '/drawings/54.jpg',
+  '/drawings/55.jpg',
+  '/drawings/56.jpg',
+  '/drawings/58.png',
+  '/drawings/61.jpg',
+  '/drawings/62.jpg',
+  '/drawings/65.png',
+  '/drawings/66.jpg',
+  '/drawings/67.JPG',
+  '/drawings/69.jpeg',
+  '/drawings/70.jpeg',
+  '/drawings/72.png',
+  '/drawings/73.jpg',
+  '/drawings/76.JPG',
+  '/drawings/77.JPEG',
+  '/drawings/78.jpg',
+  '/drawings/79.jpg',
+  '/drawings/80.jpeg',
+  '/drawings/82.png',
+  '/drawings/83.png',
+  '/drawings/86.png',
+  '/drawings/87.png',
+  '/drawings/89.JPG',
+  '/drawings/90.jpg',
+  '/drawings/91.jpg',
+  '/drawings/92.jpg',
+];
 
 export async function GET() {
-  try {
-    const drawingsDir = path.join(process.cwd(), 'public', 'drawings');
-    const files = fs.readdirSync(drawingsDir);
-    
-    const imageFiles = files.filter(file => {
-      const ext = path.extname(file).toLowerCase();
-      return ['.jpg', '.jpeg', '.png'].includes(ext);
-    });
-
-    const sortedImages = imageFiles
-      .sort((a, b) => {
-        const numA = parseInt(a.match(/\d+/)?.[0] || '0');
-        const numB = parseInt(b.match(/\d+/)?.[0] || '0');
-        return numA - numB;
-      })
-      .map(file => `/drawings/${file}`);
-
-    return NextResponse.json({ images: sortedImages });
-  } catch (error) {
-    console.error('Error fetching drawings:', error);
-    return NextResponse.json({ error: 'Failed to fetch images' }, { status: 500 });
-  }
+  return NextResponse.json({ images: DRAWINGS });
 } 

@@ -1,8 +1,6 @@
-'use client'
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/app/context/CartContext"
+import ClientLayout from "./components/ClientLayout";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -22,21 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <CartProvider>
-          <div className="min-h-screen relative">
-            <div 
-              className="fixed inset-0 z-[-1] bg-black"
-              style={{
-                backgroundImage: 'url(/fond-rayon.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                mixBlendMode: 'screen'
-              }}
-            />
-            {children}
-          </div>
-        </CartProvider>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   )
