@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount * 100), // Stripe expects amounts in cents
       currency: 'eur',
-      payment_method_types: ['card', 'apple_pay'],
+      payment_method_types: ['card'],
       metadata: {
         order_items: JSON.stringify(
           items.map(item => ({
