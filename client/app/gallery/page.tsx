@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import Navbar from '../components/Navbar';
 
 export default function Gallery() {
   const [images, setImages] = useState<string[]>([]);
@@ -55,6 +56,7 @@ export default function Gallery() {
 
   return (
     <div className="w-full">
+      <Navbar />
       <div className="grid grid-cols-2 w-full">
         {currentImages.map((src, index) => (
           <div key={indexOfFirstImage + index} className="relative aspect-square overflow-hidden">
