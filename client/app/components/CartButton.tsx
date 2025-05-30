@@ -14,7 +14,7 @@ export default function CartButton() {
     <div className="relative text-black">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 bg-red-600 px-4 py-2 rounded-md"
+        className="flex items-center gap-2 bg-red-600 px-4 py-2 rounded-md text-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ export default function CartButton() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-12 w-96 bg-red-500 shadow-lg rounded-md z-50">
+        <div className="absolute right-0 top-12 w-96 bg-white shadow-lg rounded-md z-[100]">
           <Cart />
         </div>
       )}
