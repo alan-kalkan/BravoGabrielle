@@ -23,7 +23,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <CartProvider>
-          <div className="min-h-screen">
+          <div className="min-h-screen relative">
+            <div 
+              className="fixed inset-0 z-[-1] bg-black"
+              style={{
+                backgroundImage: 'url(/fond-rayon.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                mixBlendMode: 'screen'
+              }}
+            />
             {children}
           </div>
         </CartProvider>
